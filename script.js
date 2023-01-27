@@ -1,5 +1,6 @@
 $(document).ready(function() {
-
+const request =  new XMLHttpRequest();
+const endPoint = 'https://api.giphy.com/v1/gifs/search?q=dog&api_key=n9c5DzWY8ugIOAORlu0hcJ6UIMCx5lk2&limit=30';
 // Start your code from here
 
 let animals = [
@@ -27,13 +28,21 @@ array.forEach(element => {
 $("#animal-buttons").on("click", ".animal-button", function() {
 
     $("#animals").empty();
+    
 
 })
 
 
 // La lógica del click de cada imagen para "intercambiar las urls"
 $("#animals").on("click", ".animal-image", function(){
-
+    if(state=="still"){
+        $(this).attr("src",$(this).attr("data-animate"))
+        $(this).attr("data-state","animate");
+    }
+    else{
+        $(this).attr("src",$(this).attr("data-still"))
+        $(this).attr("data-state","still");
+    }
 
 })
 
